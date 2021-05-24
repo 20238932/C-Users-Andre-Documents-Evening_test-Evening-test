@@ -1,0 +1,54 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# Purpose
+
+The aim of this folder is to.... (Explain yourself here)
+
+Load in coding scripts
+
+```{r}
+
+rm(list = ls()) # Clean your environment:
+gc() # garbage collection - It can be useful to call gc after a large object has been removed, as this may prompt R to return memory to the operating system.
+library(pacman)
+p_load(tidyverse, rmsfuns)
+
+# Source in all your functions:
+list.files('code/', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+Result <- example_function(x = 10, y = 20)
+
+
+```
+
+
+```{r}
+#loading wine
+wine_data<-readRDS("C:/Users/Andre/Documents/Evening_test/Evening test/data/Wine/WineMag.rds")
+
+#a)
+
+#get median
+
+
+wine_data %>% 
+  select("country", "points") %>% 
+  arrange(country) %>% 
+  filter(country=="Argentina")
+
+
+  select("country", "points") %>%
+  filter(country==c("Italy", "Portugal")) %>% 
+  ggplot()+
+  geom_bar(aes(x=`country`, color=`country`))+
+  geom_text(aes(`country`,`points`), label.position ="top")
+
+
+```
+
+
+
